@@ -18,4 +18,4 @@ subplot(3,1,2)
 plot(y(:,2))
 cor=xcorr(modifiedsig(:,1),y(:,2));
 subplot(3,1,3)
-plot(cor(4:10000))
+plot(cor)
