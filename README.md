@@ -1,2 +1,4 @@
 # Simulation
- simulations for honours project
+Simulations for honours project
+
+This app design to simulate different scenarios to investigate cross-correlation.
