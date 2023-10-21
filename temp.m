@@ -1,21 +1,14 @@
-% load handel.mat
-% 
-% filename = 'handel.wav';
-% audiowrite(filename,y,Fs);
-% clear y Fs
+% Create a table with your data and add some information
+simdata = rand(5, 3);  % Sample data
 
-[y,Fs] = audioread('Bird_song.wav');
-disp(Fs)
-5*Fs
-z=zeros(5,2)
-[zrows,zcol]=size(z)
-delayedsig=y(zrows:end,:);
-advancesig=y(1:end-zrows,:);
-modifiedsig=[delayedsig;z];
-subplot(3,1,1)
-plot(y(:,1))
-subplot(3,1,2)
-plot(y(:,2))
-cor=xcorr(modifiedsig(:,1),y(:,2));
-subplot(3,1,3)
-plot(cor)
+% Save the table to a CSV file
+timestamp = datetime("now","Format","ddMMyyyy_HHmm")
+simfilename="simdata_" + string(timestamp) + ".mat"
+
+siginfo = audioinfo("Speech.wav");
+siginfo.window = 24;
+currentfolder = pwd;
+mkdir(string(timestamp));
+foldername = currentfolder + "\" + string(timestamp)
+fullroute = fullfile(foldername,simfilename)
+save(fullroute,"simdata","siginfo");
